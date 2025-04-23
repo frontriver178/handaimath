@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>30秒数学</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .slide {
+      background: #fff;
+      padding: 40px;
+      max-width: 880px;
+      margin: 30px auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      line-height: 1.9;
+    }
+
+    h2 {
+      color: #0f172a;
+      font-size: 1.8em;
+      border-left: 6px solid #3b82f6;
+      padding-left: 12px;
+      margin-bottom: 1em;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #1e293b;
+      margin: 1em 0;
+    }
+
+    .toggle-answer {
+      display: inline-block;
+      background-color: #3b82f6;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 1em 0;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-answer:hover {
+      background-color: #2563eb;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 1em;
+      border-top: 1px solid #d1d5db;
+      padding-top: 1em;
+    }
+
+    .MathJax {
+      font-size: 1.2em !important;
+    }
+
+    @media (max-width: 600px) {
+      .slide {
+        padding: 25px 20px;
+      }
+
+      h2 {
+        font-size: 1.4em;
+      }
+
+      .toggle-answer {
+        font-size: 0.95em;
+      }
+
+      .MathJax_Display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+      }
+      .MathJax_Display {
+      padding-bottom: 0.5em;
+      }
+
+
+
+      p {
+        font-size: 1em;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h2>このサイトについで</h2>
+    <p>通学時間や隙間時間に \(\textcolor{blue}{「30秒で学べる数学」}\) をコンセプトに問題及び解答を公開しております.
+      当サイトに掲載している解答は大学側が公表しているものではなく阪大数学botが独自に作成したものです．</p>
+  </div>
+
+<div class="slide">
+  <h2>相加・相乗平均の関係</h2>
+  <p>\( x > 0, y > 0, z > 0 \), \( x + y + z = 3 \) のとき，</p>
+  <p style="text-align:center;">\[ \frac{1}{x} + \frac{1}{y} + \frac{1}{z} \]</p>
+  <p>の最小値を求めよ．</p>
+
+  <div class="toggle-answer" onclick="toggleAnswer(this)">解答を表示</div>
+  <div class="answer">
+    <p>
+    \[
+    \begin{align*}
+    (x + y + z )\left(\frac{1}{x} + \frac{1}{y} + \frac{1}{z}\right)
+    &= \left( \frac{x}{y} + \frac{y}{x} \right) + \left( \frac{y}{z} + \frac{z}{y} \right) + \left( \frac{z}{x} + \frac{x}{z} \right) + 3 \\
+    &\geq 2\sqrt{\frac{x}{y} \cdot \frac{y}{x}} + 2\sqrt{\frac{y}{z} \cdot \frac{z}{y}} + 2\sqrt{\frac{z}{x} \cdot \frac{x}{z}} + 3 = 9
+    \end{align*}
+    \]
+    </p>
+    <p>よって</p>
+    <p>
+    \[
+    x = y = z = 1 \quad \Rightarrow \quad 最小値は \textcolor{red}{3}
+    \]
+    </p>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>連続3整数の積</h2>
+  <p>
+    \( n^3 - 7n + 9 \) が素数となるような整数 \( n \) をすべて求めよ。(京都大学2018年)
+  </p>
+
+  <div class="toggle-answer" onclick="toggleAnswer(this)">解答を表示</div>
+  <div class="answer">
+    <p>
+    \[
+    \begin{align*}
+    n^3 - 7n + 9 &= ( n^3 - n ) - 6n + 9 \\
+    &= (n-1)n(n+1) - 6n + 9
+    \end{align*}
+    \]
+    </p>
+    <p>
+      この式は3の倍数なので、素数となるには 3 しかない。<br>
+      よって
+      \[
+      n^3 - 7n + 9 = 3 \Rightarrow n = \textcolor{red}{1, 2, -3}
+      \]
+    </p>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(btn) {
+    const answer = btn.nextElementSibling;
+    answer.style.display = answer.style.display === "block" ? "none" : "block";
+    btn.textContent = answer.style.display === "block" ? "解答を隠す" : "解答を表示";
+  }
+</script>
+
+</body>
+</html>
